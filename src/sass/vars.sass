@@ -1,0 +1,67 @@
+// vars
+$text-color: rgba(36, 42, 58, 1)
+$gray-color: rgba(204, 204, 204, 1)
+$green-color: #5EC6A1
+$main-font: sans-serif
+$theme-ios-font: 'SF UI Display', sans-serif
+$theme-android-font: 'Roboto', sans-serif
+// my-mixins
+
+
+=card_shadow
+  box-shadow: 0 4px 8px -7px rgba(0,0,0,.2)
+
+=gradient($color1, $color2, $way)
+  background: $color1
+  background: linear-gradient(to $way, $color1 0%, $color2 100%)
+
+=size($size)
+  width: $size
+  height: $size
+
+=custom_bg($size)
+  background-color: transparent
+  background-size: $size
+  background-position: center center
+  background-repeat: no-repeat
+
+=clipping_text()
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+=square()
+  &:after
+    content: ""
+    display: block
+    padding-top: 100%
+
+=placeholder()
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+=media($size)
+  @media screen and (max-width: $size+px)
+    @content
+
+=large()
+  @media screen and (max-width: 1400px)
+    @content
+
+=medium()
+  @media screen and (max-width: 992px)
+    @content
+
+=small()
+  @media screen and (max-width: 768px)
+    @content
+
+=extra_small()
+  @media screen and (max-width: 576px)
+    @content
