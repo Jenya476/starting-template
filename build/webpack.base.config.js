@@ -3,23 +3,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
-const I18nPlugin = require("i18n-webpack-plugin");
-const languages = {
-  en: {
-    "hello": "Hallo Welt",
-    inner: {in: "Inner page", lang: 'en'}
-  },
-  ru: {
-    "hello": "Привет",
-    inner: {in: "Внутренняя страница", lang: 'ru'}
-  }
-};
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
   dist: path.join(__dirname, '../dist'),
-  assets: 'assets/'
+  assets: 'assets/',
+  locales: '../src/locales.json'
 };
+const languages = require(PATHS.locales);
 
 module.exports = Object.keys(languages).map(language => ({
   externals: {
@@ -92,13 +83,13 @@ module.exports = Object.keys(languages).map(language => ({
       hash: false,
       template: `${PATHS.src}/index.html`,
       filename: `./${language}/index.html`,
-      templateParameters: {page: 'main'}
+      templateParameters: {page: 'main', loc: languages[language]}
     }),
     new HtmlWebpackPlugin({
       hash: false,
       template: `${PATHS.src}/index.html`,
       filename: `./${language}/products.html`,
-      templateParameters: {page: 'products'}
+      templateParameters: {page: 'products', loc: languages[language]}
     }),
     new CopyWebpackPlugin([
       {
@@ -120,7 +111,6 @@ module.exports = Object.keys(languages).map(language => ({
       overrideExtension: true,
       detailedLogs: false,
       strict: true
-    }),
-    new I18nPlugin(languages[language], {nested: true}),
+    })
   ]
 }));

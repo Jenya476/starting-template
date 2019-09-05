@@ -8,11 +8,11 @@
 
 </head>
 <body id="body">
-<%= _.template(require('html-loader!./views/header.html'))({data: __("inner")}) %>
+<%= _.template(require('html-loader!./views/header.html'))({loc: loc}) %>
 
-<%= __("hello") %>
-<%= _.template(require('html-loader!./views/' + page + '.html'))({data: __("inner")}) %>
-<%= _.template(require('html-loader!./views/footer.html'))({data: __("inner")}) %>
+${loc.hello}
+<%= _.template(require('html-loader!./views/' + page + '.html'))({loc: loc}) %>
+<%= _.template(require('html-loader!./views/footer.html'))({loc: loc}) %>
 
 </body>
 </html>

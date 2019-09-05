@@ -1,0 +1,17 @@
+{
+  "en": {
+    "hello": "Hallo Welt",
+    "in": "Inner page",
+    "lang": "en"
+  },
+  "ru": {
+    "hello": "Привет",
+    "in": "Внутренняя страница",
+    "lang": "ru"
+  },
+  "it": {
+    "hello": "Bonjorno",
+    "in": "Bonjorno nina",
+    "lang": "it"
+  }
+}
