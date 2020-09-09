@@ -46,7 +46,9 @@ module.exports = {
             options: { sourceMap: true }
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: `build/postcss.config.js` } }
+            options: { sourceMap: true, postcssOptions: {
+                config: false,
+              } }
           }, {
             loader: 'sass-loader',
             options: { sourceMap: true }
